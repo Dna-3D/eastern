@@ -1,0 +1,22 @@
+{
+  "name": "eastern-gist",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Eastern Gist - Campus Super-App for Nigerian Universities",
+  "scripts": {
+    "dev": "pnpm --parallel -r run dev",
+    "dev:api": "pnpm --filter @eastern/api run dev",
+    "dev:web": "pnpm --filter @eastern/web run dev",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "db:migrate": "pnpm --filter @eastern/api run db:migrate",
+    "db:seed": "pnpm --filter @eastern/api run db:seed",
+    "db:studio": "pnpm --filter @eastern/api run db:studio",
+    "db:generate": "pnpm --filter @eastern/api run db:generate",
+    "clean": "pnpm -r run clean"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
