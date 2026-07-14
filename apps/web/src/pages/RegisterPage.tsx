@@ -5,7 +5,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import toast from 'react-hot-toast';
 import { authApi } from '@/lib/api';
-import { api } from '@/lib/api';
 
 const registerSchema = z.object({
   email: z.string().email('Enter a valid email address'),

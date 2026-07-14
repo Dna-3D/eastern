@@ -2,7 +2,7 @@
 // Auth Routes - Register, Login, Verify, Refresh, Logout
 // ============================================================
 
-import { Router, Request, Response, NextFunction } from 'express';
+import { Router, type Request, type Response, type NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import { prisma } from '../lib/prisma.js';
@@ -18,7 +18,7 @@ import { registerSchema, loginSchema, verifyEmailSchema } from '../lib/validatio
 import { requireAuth } from '../middleware/auth.js';
 import { ConflictError, UnauthorizedError, NotFoundError, AppError } from '../lib/errors.js';
 
-const router = Router();
+const router: ReturnType<typeof Router> = Router();
 
 /**
  * Generate a 6-digit OTP

@@ -9,8 +9,10 @@ import jwt from 'jsonwebtoken';
 
 const ACCESS_SECRET = process.env.JWT_ACCESS_SECRET || 'dev-access-secret-change-me';
 const REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'dev-refresh-secret-change-me';
-const ACCESS_EXPIRES_IN = process.env.JWT_ACCESS_EXPIRES_IN || '15m';
-const REFRESH_EXPIRES_IN = process.env.JWT_REFRESH_EXPIRES_IN || '7d';
+
+// Expiry in seconds
+const ACCESS_EXPIRES_SECONDS = 15 * 60; // 15 minutes
+const REFRESH_EXPIRES_SECONDS = 7 * 24 * 60 * 60; // 7 days
 
 export interface TokenPayload {
   userId: string;
@@ -19,11 +21,11 @@ export interface TokenPayload {
 }
 
 export function signAccessToken(payload: TokenPayload): string {
-  return jwt.sign(payload, ACCESS_SECRET, { expiresIn: ACCESS_EXPIRES_IN });
+  return jwt.sign(payload as object, ACCESS_SECRET, { expiresIn: ACCESS_EXPIRES_SECONDS });
 }
 
 export function signRefreshToken(payload: TokenPayload): string {
-  return jwt.sign(payload, REFRESH_SECRET, { expiresIn: REFRESH_EXPIRES_IN });
+  return jwt.sign(payload as object, REFRESH_SECRET, { expiresIn: REFRESH_EXPIRES_SECONDS });
 }
 
 export function verifyAccessToken(token: string): TokenPayload {

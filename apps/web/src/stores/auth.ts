@@ -5,18 +5,23 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+interface Profile {
+  id: string;
+  displayName: string;
+  username: string;
+  avatarUrl?: string | null;
+  universityId?: string | null;
+  xp: number;
+  level: number;
+  streak: number;
+}
+
 interface User {
   id: string;
   email: string;
   emailVerified: boolean;
   role: string;
-  profile?: {
-    id: string;
-    displayName: string;
-    username: string;
-    avatarUrl?: string | null;
-    universityId?: string | null;
-  } | null;
+  profile?: Profile | null;
 }
 
 interface AuthState {

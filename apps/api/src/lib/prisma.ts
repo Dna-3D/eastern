@@ -5,7 +5,7 @@
 // In serverless environments, cache across warm starts.
 // ============================================================
 
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client/runtime/library';
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
